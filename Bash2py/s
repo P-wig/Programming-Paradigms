@@ -1,0 +1,27 @@
+#!/bin/bash
+
+URL=https://github.com/apache/datafusion
+
+function process() {
+        # $1 $2 $3 $4 .....
+        name=${1##*/}
+
+        if [ ! -d "$name" ]; then
+                git clone "$url" || return 255
+        fi
+
+        #find "$name" -name "*.rs" | wc -l
+        #find "$name" -name "*.rs"
+
+        for f in $(find "$name" -name "*.rs"); do
+                grep 'ab' $f > /dev/null
+                if [ $? -eq 0 ]; then
+                        echo $f
+                fi
+        done
+
+        return 0
+}
+
+process "$URL" > output.txt
+grep 'window' output.txt

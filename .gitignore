@@ -1,0 +1,12 @@
+# Ignore the cloned datafusion repository
+datafusion/
+
+# Common local artifacts
+output.txt
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+venv/
+.env
+.vscode/
