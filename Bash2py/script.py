@@ -29,13 +29,14 @@ import sys
 import subprocess
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent
 URL = "https://github.com/apache/datafusion"
-OUTFILE = "output.txt"
+OUTFILE = BASE_DIR / "output.txt"
 
 def process( url ):
     # obtain the final segment of the URL path "datafusion"
     repo = url.rstrip("/").split("/")[-1]
-    repo_path = Path(repo)
+    repo_path = BASE_DIR / repo
 
     # clone the repository if it doesn't exist in the current directory
     if not repo_path.is_dir():
